@@ -1,4 +1,4 @@
-# Another NixOS setup
+# My hydra-head nixos config
 
 A full NixOS-based image to run a Hydra Head with a group of peers.
 
