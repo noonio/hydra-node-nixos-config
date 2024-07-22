@@ -131,8 +131,8 @@ in
     # Run 'logs -f' to follow
     logs = "journalctl -u mithril-maybe-download -u cardano-node -u hydra-node -u necessary-files";
 
-    # Always open hydra-tui with the right args:
-    hydra-tui = "hydra-tui --testnet-magic ${networkMagic} --node-socket ${cardanoDataPath}/node.socket -k ${cardanoDataPath}/credentials/${nodeId}-funds.sk";
+    # Open hydra-tui with the right args:
+    tui = "hydra-tui --testnet-magic ${networkMagic} --node-socket ${cardanoDataPath}/node.socket -k ${cardanoDataPath}/credentials/${nodeId}-funds.sk";
   };
 
   environment.variables = commonEnvVars;
