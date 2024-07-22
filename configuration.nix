@@ -101,6 +101,8 @@ in
     in
     [
       pkgs.git
+      pkgs.jq
+      pkgs.websocat
 
       # So you can just do (if you just want fresh credentials):
       #
