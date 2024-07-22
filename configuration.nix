@@ -103,6 +103,7 @@ in
       pkgs.git
       pkgs.jq
       pkgs.websocat
+      pkgs.vim
 
       # So you can just do (if you just want fresh credentials):
       #
