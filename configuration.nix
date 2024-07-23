@@ -117,6 +117,7 @@ in
       genFundsKey
 
       hydra.packages."${system}".hydra-tui # To interact with your node/peers
+      hydra.packages."${system}".hydraw # To play hydraw
 
       # These aren't really needed, as the systemd services just pull in the
       # binaries directly, but might be useful for debugging, so we leave them
