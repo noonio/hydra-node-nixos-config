@@ -61,3 +61,9 @@ qemu-system-x86_64 -enable-kvm -m 8000 -drive file=nixos.qcow2,media=disk,if=vir
 
 Note that this results in very large nix store allocations; so if you do it
 often don't forget to garbage-collect!
+
+
+### Todo
+
+- [ ] Make sure that when a new cardano-node version is used, the relevant
+      configs are downloaded. Presently this has to be done manually.

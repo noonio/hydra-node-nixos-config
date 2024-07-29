@@ -6,7 +6,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    cardano-node.url = "github:IntersectMBO/cardano-node/9.0.0";
+    # Note: Don't forget to update the version in `configuration.nix`.
+    cardano-node.url = "github:IntersectMBO/cardano-node/9.1.0";
     hydra.url = "github:cardano-scaling/hydra/209de1dd8c5ae484a45a4db3af043c4a9d271306";
     mithril.url = "github:input-output-hk/mithril/2423.0";
   };
