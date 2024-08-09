@@ -23,6 +23,10 @@ let
   nodeId = "noon";
   hydraPort = "5005";
 
+  # This is used to get the script tx id, and should then agree with the
+  # version that comes in via the flake input.
+  hydraVersion = "0.18.0";
+
   # These three variables must agree
   networkName = "preview";
   networkMagic = "2";
@@ -258,7 +262,7 @@ in
       after = [ "cardano-node.service" ];
       requires = [ "cardano-node.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ git ];
+      path = with pkgs; [ git jq ];
       serviceConfig = {
         User = "hydra";
         WorkingDirectory = cardanoDataPath;
@@ -289,7 +293,7 @@ in
                 --node-socket node.socket \
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
-                --hydra-scripts-tx-id $(cat hydra-team-config/hydra-scripts-tx-id) \
+                --hydra-scripts-tx-id $(jq -r '.${networkName}."${hydraVersion}"' ${hydra.outPath}/networks.json) \
                 ${peerArgs}
             '';
           in
