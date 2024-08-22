@@ -10,7 +10,8 @@
     cardano-node.url = "github:IntersectMBO/cardano-node/9.1.0";
     mithril.url = "github:input-output-hk/mithril/2423.0";
 
-    hydra.url = "github:cardano-scaling/hydra/0.18.0";
+    # Note: Don't forget to update the version in `configuration.nix` as well.
+    hydra.url = "github:cardano-scaling/hydra/0.18.1";
   };
 
 
