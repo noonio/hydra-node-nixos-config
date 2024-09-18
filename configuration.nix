@@ -108,6 +108,7 @@ in
       pkgs.jq
       pkgs.websocat
       pkgs.vim
+      pkgs.systemctl-tui
 
       # So you can just do (if you just want fresh credentials):
       #
