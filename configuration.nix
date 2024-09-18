@@ -25,7 +25,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "0.18.1";
+  hydraVersion = "0.19.0";
 
   # These three variables must agree
   networkName = "preview";
@@ -34,7 +34,7 @@ let
   # and "preview" `testing-preview`
   mithrilDir = "testing-${networkName}";
 
-  nodeVersion = "9.1.0"; # Note: This must match the node version in the flake.nix
+  nodeVersion = "9.1.1"; # Note: This must match the node version in the flake.nix
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
@@ -186,7 +186,7 @@ in
 
               # Jump to specific revision
               cd hydra-team-config && \
-                git checkout dee7986b1377a0fa93d06cfc131ae7c26ca34299 && \
+                git checkout fae9724275bec9f3766936b40cd3bd2c56031b78 && \
                 cd ..
 
               systemd-notify --ready

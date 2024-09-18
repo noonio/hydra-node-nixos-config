@@ -514,16 +514,16 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1721843629,
-        "narHash": "sha256-F5wgRA820x16f+8c/LlEEBG0rMJIA1XWw6X0ZwX5UWs=",
+        "lastModified": 1725255033,
+        "narHash": "sha256-VIwEjpaGk09+dAcKELjLSR2OP3qBCWTGHpd0SBjgbVc=",
         "owner": "IntersectMBO",
         "repo": "cardano-node",
-        "rev": "176f99e51155cb3eaa0711db1c3c969d67438958",
+        "rev": "efd560070aaf042d1eb4680ae37fc607c7742319",
         "type": "github"
       },
       "original": {
         "owner": "IntersectMBO",
-        "ref": "9.1.0",
+        "ref": "9.1.1",
         "repo": "cardano-node",
         "type": "github"
       }
@@ -557,16 +557,16 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1721843629,
-        "narHash": "sha256-F5wgRA820x16f+8c/LlEEBG0rMJIA1XWw6X0ZwX5UWs=",
+        "lastModified": 1725255033,
+        "narHash": "sha256-VIwEjpaGk09+dAcKELjLSR2OP3qBCWTGHpd0SBjgbVc=",
         "owner": "intersectmbo",
         "repo": "cardano-node",
-        "rev": "176f99e51155cb3eaa0711db1c3c969d67438958",
+        "rev": "efd560070aaf042d1eb4680ae37fc607c7742319",
         "type": "github"
       },
       "original": {
         "owner": "intersectmbo",
-        "ref": "9.1.0",
+        "ref": "9.1.1",
         "repo": "cardano-node",
         "type": "github"
       }
@@ -2357,16 +2357,16 @@
         "process-compose-flake": "process-compose-flake"
       },
       "locked": {
-        "lastModified": 1723741790,
-        "narHash": "sha256-2MrIfq73116u+LZRnOfKFJNlX/3h1wx8in9amq+vO3s=",
+        "lastModified": 1726235414,
+        "narHash": "sha256-0KoyMh8UTsJ0bayr7FouA72N9Xs48LkxBoIEZXA/rTA=",
         "owner": "cardano-scaling",
         "repo": "hydra",
-        "rev": "8d8d3a3662f0e3cb677b31071976c9b6ecae3f1d",
+        "rev": "1ffe7c6b505e3f38b5546ae5e5b97de26bc70425",
         "type": "github"
       },
       "original": {
         "owner": "cardano-scaling",
-        "ref": "0.18.1",
+        "ref": "0.19.0",
         "repo": "hydra",
         "type": "github"
       }
@@ -2727,16 +2727,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1720620343,
-        "narHash": "sha256-DXIX9kww679WFpiuQ2skk/bRuY4Jtlx1FaXK36YJPQE=",
+        "lastModified": 1721986510,
+        "narHash": "sha256-Qk8aEY1nyo6f+cCY6M/4YRSXtn7u31oM1lnPm3Ys80U=",
         "owner": "input-output-hk",
         "repo": "mithril",
-        "rev": "6756b0f7d73d37229321ec6be74954f5c6d0486c",
+        "rev": "52a7beb77c537b54fcb1ca171bf1b1c0c059bad8",
         "type": "github"
       },
       "original": {
         "owner": "input-output-hk",
-        "ref": "2428.0",
+        "ref": "2430.0",
         "repo": "mithril",
         "type": "github"
       }
@@ -2749,16 +2749,16 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1717661254,
-        "narHash": "sha256-64Wh1eP80BWqlqiv7i+WSUdIkwsDZmEPNqO09+W5o48=",
+        "lastModified": 1721986510,
+        "narHash": "sha256-Qk8aEY1nyo6f+cCY6M/4YRSXtn7u31oM1lnPm3Ys80U=",
         "owner": "input-output-hk",
         "repo": "mithril",
-        "rev": "665621d391b7163ab3d1c76aba228b93a7cfe12d",
+        "rev": "52a7beb77c537b54fcb1ca171bf1b1c0c059bad8",
         "type": "github"
       },
       "original": {
         "owner": "input-output-hk",
-        "ref": "2423.0",
+        "ref": "2430.0",
         "repo": "mithril",
         "type": "github"
       }
