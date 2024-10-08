@@ -139,6 +139,10 @@ in
 
     # Open hydra-tui with the right args:
     tui = "hydra-tui --testnet-magic ${networkMagic} --node-socket ${cardanoDataPath}/node.socket -k ${cardanoDataPath}/credentials/${nodeId}-funds.sk";
+
+    # Start/stop hydra-node
+    start-node = "sudo systemctl start hydra-node";
+    stop-node = "sudo systemctl stop hydra-node";
   };
 
   environment.variables = commonEnvVars;
