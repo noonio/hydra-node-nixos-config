@@ -7,7 +7,7 @@
     };
 
     # Note: Don't forget to update the version in `configuration.nix`.
-    cardano-node.url = "github:IntersectMBO/cardano-node/9.1.1";
+    cardano-node.url = "github:IntersectMBO/cardano-node/10.1.2";
     mithril.url = "github:input-output-hk/mithril/2430.0";
 
     # Note: Don't forget to update the version in `configuration.nix` as well.
