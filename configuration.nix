@@ -14,10 +14,10 @@ let
   # Select only the friends we want from the full list:
   # <https://github.com/input-output-hk/hydra-team-config/tree/master/parties>
   peers = [
-    "dan"
+    # "dan"
     "franco"
     "sasha"
-    "sebastian"
+    # "sebastian"
   ];
 
   nodeId = "noon";
@@ -25,7 +25,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "0.19.0";
+  hydraVersion = "0.20.0";
 
   # These three variables must agree
   networkName = "preview";
