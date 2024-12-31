@@ -2391,6 +2391,7 @@
       },
       "original": {
         "owner": "cardano-scaling",
+        "ref": "master",
         "repo": "hydra",
         "type": "github"
       }

@@ -11,7 +11,7 @@
     mithril.url = "github:input-output-hk/mithril/2450.0";
 
     # Note: Don't forget to update the version in `configuration.nix` as well.
-    hydra.url = "github:cardano-scaling/hydra";
+    hydra.url = "github:cardano-scaling/hydra/master";
   };
 
 
