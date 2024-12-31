@@ -298,6 +298,7 @@ in
                 --node-socket node.socket \
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
+                --contestation-period 300s \
                 --hydra-scripts-tx-id $(jq -r '.${networkName}."${hydraVersion}"' ${hydra.outPath}/networks.json) \
                 ${peerArgs}
             '';
