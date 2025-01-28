@@ -7,11 +7,14 @@
     };
 
     # Note: Don't forget to update the version in `configuration.nix`.
-    cardano-node.url = "github:IntersectMBO/cardano-node/10.1.2";
+    cardano-node.url = "github:IntersectMBO/cardano-node/10.1.4";
     mithril.url = "github:input-output-hk/mithril/2450.0";
 
     # Note: Don't forget to update the version in `configuration.nix` as well.
     hydra.url = "github:cardano-scaling/hydra/master";
+
+    # interactive systemd
+    isd.url = "github:isd-project/isd";
   };
 
 
@@ -22,6 +25,7 @@
     , cardano-node
     , hydra
     , mithril
+    , isd
     , ...
     }@inputs:
     let

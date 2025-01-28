@@ -34,7 +34,7 @@ let
   # and "preview" `testing-preview`
   mithrilDir = "testing-${networkName}";
 
-  nodeVersion = "10.1.2"; # Note: This must match the node version in the flake.nix
+  nodeVersion = "10.1.4"; # Note: This must match the node version in the flake.nix
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
@@ -219,7 +219,7 @@ in
             "AGGREGATOR_ENDPOINT=https://aggregator.${mithrilDir}.api.mithril.network/aggregator"
           ];
           # We need to wait a bit for the initial download.
-          TimeoutStartSec = 10 * 60;
+          TimeoutStartSec = 30 * 60;
           ExecStart =
             let
               mithrilMaybeDownload = pkgs.writeShellScriptBin "mithrilMaybeDownload" ''
