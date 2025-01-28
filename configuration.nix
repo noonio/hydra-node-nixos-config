@@ -18,7 +18,7 @@ let
     "dan"
     "franco"
     "sasha"
-    "sebastian"
+    # "sebastian"
   ];
 
   nodeId = "noon";
