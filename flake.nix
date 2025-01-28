@@ -40,7 +40,8 @@
             system
             cardano-node
             hydra
-            mithril;
+            mithril
+            isd;
         };
         modules = [
           "${nixpkgs}/nixos/modules/virtualisation/google-compute-image.nix"
@@ -57,7 +58,8 @@
               system
               cardano-node
               hydra
-              mithril;
+              mithril
+              isd;
           };
           modules = [
             ./configuration.nix
@@ -73,7 +75,8 @@
               system
               cardano-node
               hydra
-              mithril;
+              mithril
+              isd;
             diskSize = 20 * 1024;
           };
           modules = [

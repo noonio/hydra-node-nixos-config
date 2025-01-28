@@ -5,6 +5,7 @@
 , cardano-node
 , hydra
 , mithril
+, isd
 , ...
 }:
 
@@ -120,6 +121,9 @@ in
       genHydraKey
       genCardanoKey
       genFundsKey
+
+      # interactive systemd
+      isd.packages."${system}".default
 
       hydra.packages."${system}".hydra-tui # To interact with your node/peers
       hydra.packages."${system}".hydraw # To play hydraw
