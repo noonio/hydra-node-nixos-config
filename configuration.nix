@@ -26,7 +26,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "0.19.0-634-g2b465027ef";
+  hydraVersion = "0.20.0";
 
   # These three variables must agree
   networkName = "preview";
@@ -110,6 +110,9 @@ in
       pkgs.websocat
       pkgs.vim
       pkgs.systemctl-tui
+
+      # New requirement
+      pkgs.etcd
 
       # So you can just do (if you just want fresh credentials):
       #
@@ -271,7 +274,7 @@ in
       after = [ "cardano-node.service" ];
       requires = [ "cardano-node.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ git jq ];
+      path = with pkgs; [ git jq etcd ];
       serviceConfig = {
         User = "hydra";
         WorkingDirectory = cardanoDataPath;
