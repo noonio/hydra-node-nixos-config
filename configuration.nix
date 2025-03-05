@@ -23,6 +23,9 @@ let
 
   nodeId = "noon";
   hydraPort = "5005";
+  # The public IP of this machine; needed so I can advertise my location to
+  # other nodes.
+  publicIp = "35.214.9.104";
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
@@ -41,7 +44,6 @@ let
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
     "CARDANO_NODE_SOCKET_PATH" = "${cardanoDataPath}/node.socket";
   };
-
 in
 {
   system.stateVersion = "24.05";
@@ -110,6 +112,7 @@ in
       pkgs.websocat
       pkgs.vim
       pkgs.systemctl-tui
+      pkgs.tree
 
       # New requirement
       pkgs.etcd
@@ -298,9 +301,9 @@ in
                 --node-id ${nodeId} \
                 --cardano-signing-key credentials/${nodeId}-node.sk \
                 --hydra-signing-key credentials/${nodeId}-hydra.sk \
-                --port ${hydraPort} \
                 --api-host 0.0.0.0 \
-                --host 0.0.0.0 \
+                --listen 0.0.0.0:${hydraPort} \
+                --advertise ${publicIp}:${hydraPort} \
                 --testnet-magic ${networkMagic}  \
                 --node-socket node.socket \
                 --persistence-dir persistence \
