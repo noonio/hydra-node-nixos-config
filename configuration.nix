@@ -113,6 +113,7 @@ in
       pkgs.vim
       pkgs.systemctl-tui
       pkgs.tree
+      pkgs.lsof
 
       # New requirement
       pkgs.etcd
