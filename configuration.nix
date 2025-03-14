@@ -256,7 +256,6 @@ in
         };
       };
 
-
     cardano-node = {
       requires = [ "mithril-maybe-download.service" "necessary-files.service" ];
       after = [ "mithril-maybe-download.service" ];
@@ -288,6 +287,10 @@ in
         WorkingDirectory = cardanoDataPath;
         # Wait 10 minutes before restarting
         RestartSec = 1 * 60;
+        Environment = [
+          "ETCD_AUTO_COMPACTION_MODE=periodic"
+          "ETCD_AUTO_COMPACTION_RETENTION=168h"
+        ];
         ExecStart =
           let
             peerArgs =
