@@ -15,8 +15,8 @@ let
   # Select only the friends we want from the full list:
   # <https://github.com/input-output-hk/hydra-team-config/tree/master/parties>
   peers = [
-    "dan"
-    "franco"
+    # "dan"
+    # "franco"
     "sasha"
     # "sebastian"
   ];
@@ -317,7 +317,7 @@ in
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
                 --contestation-period 300s \
-                --deposit-deadline 600s \
+                --deposit-deadline 1000s \
                 --hydra-scripts-tx-id $(jq -r '.${networkName}."${hydraVersion}"' ${hydra.outPath}/networks.json) \
                 ${peerArgs}
             '';
