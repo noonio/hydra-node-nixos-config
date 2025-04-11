@@ -2378,11 +2378,11 @@
         "nixpkgs": "nixpkgs_15"
       },
       "locked": {
-        "lastModified": 1738003268,
-        "narHash": "sha256-VdCO1qCzJBOiO+c6mdtGcJnRfbCRH7xYo9mt+fr63Vo=",
+        "lastModified": 1744277032,
+        "narHash": "sha256-Z83c60ZY8JQ3J7w1lD/6raEIuiXdxjGHXP/FND4YHLA=",
         "owner": "cardano-scaling",
         "repo": "hydra-formal-specification",
-        "rev": "27d17772d37c202bbb11d979d0e3f549838cb6f4",
+        "rev": "a626ac70c7b74ccfa6432512ad752ef37d80a1c6",
         "type": "github"
       },
       "original": {
@@ -2412,11 +2412,11 @@
         "process-compose-flake": "process-compose-flake"
       },
       "locked": {
-        "lastModified": 1742566190,
-        "narHash": "sha256-hcwBKvLGGdlhRcWQy5sZOP2hq5XkJlf3nh209c2R1H0=",
+        "lastModified": 1744284471,
+        "narHash": "sha256-oz/cnb65Zc2/4s92QhGZfQP0wDh9abDF1yOL9wjU+tc=",
         "owner": "cardano-scaling",
         "repo": "hydra",
-        "rev": "b06f4f827c68b4f8ba8fb1c4c960084b1ca6d0c8",
+        "rev": "e236147f5df25ce504de47781ab148bcdd84113e",
         "type": "github"
       },
       "original": {
