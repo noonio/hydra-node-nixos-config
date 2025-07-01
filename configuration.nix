@@ -29,7 +29,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "0.21.0";
+  hydraVersion = "0.22.2";
 
   # These three variables must agree
   networkName = "preview";
