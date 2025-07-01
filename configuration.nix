@@ -318,9 +318,10 @@ in
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
                 --contestation-period 300s \
-                --deposit-deadline 1000s \
+                --deposit-period 600s \
                 --monitoring-port 9009 \
-                --hydra-scripts-tx-id $(jq -r '.${networkName}."${hydraVersion}"' ${hydra.outPath}/networks.json) \
+                --persistence-rotate-after 10000 \
+                --network ${networkName} \
                 ${peerArgs}
             '';
           in
