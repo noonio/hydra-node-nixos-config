@@ -18,6 +18,7 @@ let
     # "dan"
     "franco"
     "sasha"
+    "veronika"
     # "sebastian"
   ];
 
@@ -29,7 +30,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "0.22.2";
+  hydraVersion = "1.1.0";
 
   # These three variables must agree
   networkName = "preview";
@@ -38,7 +39,7 @@ let
   # and "preview" `testing-preview`
   mithrilDir = "testing-${networkName}";
 
-  nodeVersion = "10.1.4"; # Note: This must match the node version in the flake.nix
+  nodeVersion = "10.4.1"; # Note: This must match the node version in the flake.nix
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
@@ -138,7 +139,7 @@ in
       isd.packages."${system}".default
 
       hydra.packages."${system}".hydra-tui # To interact with your node/peers
-      hydra.packages."${system}".hydraw # To play hydraw
+      # hydra.packages."${system}".hydraw # To play hydraw
 
       # These aren't really needed, as the systemd services just pull in the
       # binaries directly, but might be useful for debugging, so we leave them
@@ -207,7 +208,7 @@ in
 
               # Jump to specific revision
               cd hydra-team-config && \
-                git checkout fae9724275bec9f3766936b40cd3bd2c56031b78 && \
+                git checkout 26b1570314617d1de6a9589aab7303aab158b5d7 && \
                 cd ..
 
               systemd-notify --ready
@@ -299,9 +300,9 @@ in
                 dir = "hydra-team-config/parties";
                 f = name: lib.strings.concatStringsSep " "
                   [
-                    "--peer $(cat ${dir}/${name}.peer)"
-                    "--hydra-verification-key ${dir}/${name}.hydra.vk"
-                    "--cardano-verification-key ${dir}/${name}.cardano.vk"
+                    "--peer $(cat ${dir}/${name}/peer)"
+                    "--hydra-verification-key ${dir}/${name}/hydra.vk"
+                    "--cardano-verification-key ${dir}/${name}/cardano.vk"
                   ];
               in
               pkgs.lib.strings.concatMapStringsSep " " f peers;
@@ -318,7 +319,7 @@ in
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
                 --contestation-period 300s \
-                --deposit-period 600s \
+                --deposit-period 300s \
                 --monitoring-port 9009 \
                 --persistence-rotate-after 10000 \
                 --network ${networkName} \

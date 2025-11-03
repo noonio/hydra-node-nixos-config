@@ -12,7 +12,7 @@ It allows for:
 ### Redeploying
 
 ```shell
-nixos-rebuild switch --target-host hydra@... --flake .#noon-hydra --use-remote-sudo
+nixos-rebuild switch --target-host hydra@35.214.9.104 --flake .#noon-hydra --use-remote-sudo
 ```
 
 

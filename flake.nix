@@ -7,11 +7,11 @@
     };
 
     # Note: Don't forget to update the version in `configuration.nix`.
-    cardano-node.url = "github:IntersectMBO/cardano-node/10.1.4";
-    mithril.url = "github:input-output-hk/mithril/2450.0";
+    cardano-node.url = "github:IntersectMBO/cardano-node/10.4.1";
+    mithril.url = "github:input-output-hk/mithril/2524.0";
 
     # Note: Don't forget to update the version in `configuration.nix` as well.
-    hydra.url = "github:cardano-scaling/hydra/0.22.2";
+    hydra.url = "github:cardano-scaling/hydra/1.1.0";
 
     # interactive systemd
     isd.url = "github:isd-project/isd";
