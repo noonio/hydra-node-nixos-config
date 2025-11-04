@@ -19,7 +19,7 @@ let
     "franco"
     "sasha"
     "veronika"
-    # "sebastian"
+    "sharan"
   ];
 
   nodeId = "noon";
@@ -208,7 +208,7 @@ in
 
               # Jump to specific revision
               cd hydra-team-config && \
-                git checkout 26b1570314617d1de6a9589aab7303aab158b5d7 && \
+                git checkout 9c72a1bec4fe7522f0f5a20ef338a0c7b33a1285 && \
                 cd ..
 
               systemd-notify --ready
