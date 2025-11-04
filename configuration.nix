@@ -15,7 +15,7 @@ let
   # Select only the friends we want from the full list:
   # <https://github.com/input-output-hk/hydra-team-config/tree/master/parties>
   peers = [
-    # "dan"
+    "dan"
     "franco"
     "sasha"
     "veronika"
