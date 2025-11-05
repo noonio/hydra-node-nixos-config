@@ -300,9 +300,9 @@ in
                 dir = "hydra-team-config/parties";
                 f = name: lib.strings.concatStringsSep " "
                   [
-                    "--peer $(cat ${dir}/${name}/peer)"
-                    "--hydra-verification-key ${dir}/${name}/hydra.vk"
-                    "--cardano-verification-key ${dir}/${name}/cardano.vk"
+                    "--peer $(cat ${dir}/${name}/peer) \\ \n"
+                    "--hydra-verification-key ${dir}/${name}/hydra.vk \\ \n"
+                    "--cardano-verification-key ${dir}/${name}/cardano.vk \\ \n"
                   ];
               in
               pkgs.lib.strings.concatMapStringsSep " " f peers;
