@@ -298,11 +298,11 @@ in
             peerArgs =
               let
                 dir = "hydra-team-config/parties";
-                f = name: lib.strings.concatStringsSep " "
+                f = name: lib.strings.concatStringsSep " \\ \n "
                   [
-                    "--peer $(cat ${dir}/${name}/peer) \\ \n"
-                    "--hydra-verification-key ${dir}/${name}/hydra.vk \\ \n"
-                    "--cardano-verification-key ${dir}/${name}/cardano.vk \\ \n"
+                    "--peer $(cat ${dir}/${name}/peer)"
+                    "--hydra-verification-key ${dir}/${name}/hydra.vk"
+                    "--cardano-verification-key ${dir}/${name}/cardano.vk"
                   ];
               in
               pkgs.lib.strings.concatMapStringsSep " " f peers;
