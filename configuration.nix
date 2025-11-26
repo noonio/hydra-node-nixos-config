@@ -39,7 +39,7 @@ let
   # and "preview" `testing-preview`
   mithrilDir = "testing-${networkName}";
 
-  nodeVersion = "10.4.1"; # Note: This must match the node version in the flake.nix
+  nodeVersion = "10.5.3"; # Note: This must match the node version in the flake.nix
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
