@@ -319,8 +319,8 @@ in
                 --node-socket node.socket \
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
-                --contestation-period 300s \
-                --deposit-period 300s \
+                --contestation-period 2000s \
+                --deposit-period 2000s \
                 --monitoring-port 9009 \
                 --persistence-rotate-after 10000 \
                 --network ${networkName} \
