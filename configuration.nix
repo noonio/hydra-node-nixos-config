@@ -28,7 +28,7 @@ let
 
   # This is used to get the script tx id, and should then agree with the
   # version that comes in via the flake input.
-  hydraVersion = "1.2.0";
+  hydraVersion = "2.2.0";
 
   # These three variables must agree
   networkName = "preprod";
@@ -37,7 +37,7 @@ let
   # and "preview" `testing-preview`
   mithrilDir = "release-preprod";
 
-  nodeVersion = "10.6.2"; # Note: This must match the node version in the flake.nix
+  nodeVersion = "11.0.1"; # Note: This must match the node version in the flake.nix
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
@@ -151,6 +151,8 @@ in
   programs.bash.shellAliases = {
     # Run 'logs -f' to follow
     logs = "journalctl -u mithril-maybe-download -u cardano-node -u hydra-node -u necessary-files";
+    # Just hydra logs
+    hlogs = "journalctl -u hydra-node";
 
     # Open hydra-tui with the right args:
     tui = "hydra-tui --testnet-magic ${networkMagic} --node-socket ${cardanoDataPath}/node.socket -k ${cardanoDataPath}/credentials/${nodeId}-funds.sk";
