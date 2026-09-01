@@ -12,7 +12,7 @@ It allows for:
 ### Redeploying
 
 ```shell
-nixos-rebuild switch --target-host hydra@35.214.9.104 --flake .#noon-hydra --use-remote-sudo
+nixos-rebuild switch --target-host hydra@34.153.166.106 --flake .#noon-hydra --use-remote-sudo
 ```
 
 
@@ -65,5 +65,7 @@ often don't forget to garbage-collect!
 
 ### Todo
 
-- [ ] Make sure that when a new cardano-node version is used, the relevant
+- [x] Make sure that when a new cardano-node version is used, the relevant
       configs are downloaded. Presently this has to be done manually.
+      (Resolved: config.json/topology.json now come from the pinned
+      cardano-node flake.)

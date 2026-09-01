@@ -24,20 +24,31 @@ let
   hydraPort = "5005";
   # The public IP of this machine; needed so I can advertise my location to
   # other nodes.
-  publicIp = "35.214.9.104";
+  publicIp = "34.147.225.41";
 
-  # This is used to get the script tx id, and should then agree with the
-  # version that comes in via the flake input.
-  hydraVersion = "2.3.0";
-
-  # These three variables must agree
+  # These two variables must agree
   networkName = "preprod";
   networkMagic = "1";
-  # This is it's own var, as mithril calls "preprod" `release-preprod`
-  # and "preview" `testing-preview`
-  mithrilDir = "release-preprod";
 
-  nodeVersion = "11.0.1"; # Note: This must match the node version in the flake.nix
+  # config.json and topology.json come out of the pinned cardano-node flake,
+  # so there is nothing to fetch at runtime and nothing to keep in sync by
+  # hand.
+  env = cardano-node.environments.${system}.${networkName};
+  cardanoLib = cardano-node.legacyPackages.${system}.cardanoLib;
+
+  nodeConfigFile = pkgs.writeText "cardano-node-config.json" (builtins.toJSON env.nodeConfig);
+
+  # mkTopology refers to the peer snapshot by a path relative to the topology
+  # file, so the two have to end up in one directory.
+  topologyDir = pkgs.runCommand "cardano-node-topology" { } (
+    ''
+      mkdir -p $out
+      cp ${cardanoLib.mkTopology env} $out/topology.json
+    ''
+    + lib.optionalString (env ? peerSnapshot) ''
+      cp ${pkgs.writeText "${env.name}-peer-snapshot.json" (builtins.toJSON env.peerSnapshot)} $out/${env.name}-peer-snapshot.json
+    ''
+  );
 
   commonEnvVars = {
     "CARDANO_NODE_NETWORK_ID" = "${networkMagic}";
@@ -169,13 +180,7 @@ in
       requires = [ "network-online.target" ];
       after = [ "network-online.target" ];
       wantedBy = [ "mithril-maybe-download.target" ];
-      path = with pkgs; [
-        curl
-        gnutar
-        gzip
-        git
-        cardano-node.packages."${system}".cardano-cli
-      ];
+      path = with pkgs; [ git ];
       serviceConfig = {
         User = "hydra";
         Type = "notify";
@@ -186,7 +191,7 @@ in
               set -e
 
               if [ -d ${cardanoDataPath} ]; then
-                echo "Not re-creating configs because ${cardanoDataPath} exists."
+                echo "Not re-creating files because ${cardanoDataPath} exists."
                 systemd-notify --ready
                 exit 0
               fi
@@ -194,14 +199,6 @@ in
               mkdir -p ${cardanoDataPath}/credentials
 
               cd ${cardanoDataPath}
-
-              # Get the node configs
-              curl -L -O \
-                https://github.com/IntersectMBO/cardano-node/releases/download/${nodeVersion}/cardano-node-${nodeVersion}-linux.tar.gz
-
-              tar xf cardano-node-${nodeVersion}-linux.tar.gz \
-                  ./share/${networkName} \
-                  --strip-components=3
 
               # Get our hydra config (and peer config)
               git clone https://github.com/cardano-scaling/hydra-team-config.git
@@ -219,45 +216,42 @@ in
     };
 
 
-    mithril-maybe-download =
-      let
-      in
-      {
-        requires = [ "network-online.target" "necessary-files.service" ];
-        after = [ "necessary-files.service" ];
-        wantedBy = [ "multi-user.target" ];
-        path = with pkgs; [ curl ];
-        serviceConfig = {
-          Type = "notify";
-          NotifyAccess = "all";
-          User = "hydra";
-          WorkingDirectory = cardanoDataPath;
-          Environment = [
-            "AGGREGATOR_ENDPOINT=https://aggregator.${mithrilDir}.api.mithril.network/aggregator"
-          ];
-          # We need to wait a bit for the initial download.
-          TimeoutStartSec = 30 * 60;
-          ExecStart =
-            let
-              mithrilMaybeDownload = pkgs.writeShellScriptBin "mithrilMaybeDownload" ''
-                set -e
+    mithril-maybe-download = {
+      requires = [ "network-online.target" "necessary-files.service" ];
+      after = [ "necessary-files.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "notify";
+        NotifyAccess = "all";
+        User = "hydra";
+        WorkingDirectory = cardanoDataPath;
+        # Aggregator endpoint and verification keys come from the pinned
+        # cardano-node flake, like the node configs.
+        Environment = [
+          "AGGREGATOR_ENDPOINT=${env.mithrilAggregatorEndpointUrl}"
+          "GENESIS_VERIFICATION_KEY=${env.mithrilGenesisVerificationKey}"
+          "ANCILLARY_VERIFICATION_KEY=${env.mithrilAncillaryVerificationKey}"
+        ];
+        # We need to wait a bit for the initial download.
+        TimeoutStartSec = 30 * 60;
+        ExecStart =
+          let
+            mithrilMaybeDownload = pkgs.writeShellScriptBin "mithrilMaybeDownload" ''
+              set -e
 
-                export GENESIS_VERIFICATION_KEY=''$(curl https://raw.githubusercontent.com/input-output-hk/mithril/main/mithril-infra/configuration/${mithrilDir}/genesis.vkey 2> /dev/null)
-                export ANCILLARY_VERIFICATION_KEY=''$(curl https://raw.githubusercontent.com/input-output-hk/mithril/main/mithril-infra/configuration/${mithrilDir}/ancillary.vkey 2> /dev/null)
+              if [ ! -d db ]; then
+                ${mithril.packages.${system}.mithril-client-cli}/bin/mithril-client \
+                  cardano-db \
+                  download \
+                  latest
+              fi
 
-                if [ ! -d db ]; then
-                  ${mithril.packages.${system}.mithril-client-cli}/bin/mithril-client \
-                    cardano-db \
-                    download \
-                    latest
-                fi
-
-                systemd-notify --ready
-              '';
-            in
-            "${lib.getExe mithrilMaybeDownload}";
-        };
+              systemd-notify --ready
+            '';
+          in
+          "${lib.getExe mithrilMaybeDownload}";
       };
+    };
 
     cardano-node = {
       requires = [ "mithril-maybe-download.service" "necessary-files.service" ];
@@ -268,8 +262,8 @@ in
         WorkingDirectory = cardanoDataPath;
         ExecStart = ''${lib.getExe cardano-node.packages.${system}.cardano-node} \
                 run \
-                --config config.json \
-                --topology topology.json \
+                --config ${nodeConfigFile} \
+                --topology ${topologyDir}/topology.json \
                 --socket-path ${cardanoDataPath}/node.socket \
                 --database-path db
         '';
