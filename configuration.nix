@@ -315,7 +315,7 @@ in
                 --persistence-dir persistence \
                 --ledger-protocol-parameters hydra-team-config/protocol-parameters.json \
                 --contestation-period 2000s \
-                --deposit-activation 2000s \
+                --deposit-activation 300s \
                 --deposit-period 2000s \
                 --monitoring-port 9009 \
                 --persistence-rotate-after 10000 \
