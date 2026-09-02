@@ -2334,16 +2334,16 @@
         "selfci": "selfci"
       },
       "locked": {
-        "lastModified": 1788256852,
-        "narHash": "sha256-0UFoQ7hENhKi444e/JHoNnDqvNBsRjodvCSeeS1jHzA=",
+        "lastModified": 1788279738,
+        "narHash": "sha256-6ptG9AJdfoSrDAfIV3KlPIN/V/5oBbQ+8R3FF4YE7lE=",
         "owner": "cardano-scaling",
         "repo": "hydra",
-        "rev": "cd1d89902fb617f88ab939a96e6bbeeb68bedda8",
+        "rev": "ce5aec87aa1dea1253730b0504da1f81a1fb7b48",
         "type": "github"
       },
       "original": {
         "owner": "cardano-scaling",
-        "ref": "master",
+        "ref": "2.4.0",
         "repo": "hydra",
         "type": "github"
       }

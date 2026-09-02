@@ -9,7 +9,7 @@
     cardano-node.url = "github:IntersectMBO/cardano-node/11.0.1";
     mithril.url = "github:input-output-hk/mithril/2617.0";
 
-    hydra.url = "github:cardano-scaling/hydra/master";
+    hydra.url = "github:cardano-scaling/hydra/2.4.0";
 
     # interactive systemd
     isd.url = "github:isd-project/isd";

@@ -24,7 +24,7 @@ let
   hydraPort = "5005";
   # The public IP of this machine; needed so I can advertise my location to
   # other nodes.
-  publicIp = "34.147.225.41";
+  publicIp = "34.153.166.106";
 
   # These two variables must agree
   networkName = "preprod";
@@ -129,6 +129,7 @@ in
       pkgs.systemctl-tui
       pkgs.tree
       pkgs.lsof
+      pkgs.htop
 
       # New requirement
       pkgs.etcd
